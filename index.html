@@ -2,7 +2,7 @@
     "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
-        <title>Infragram | by Public Lab - Home</title>
+        <title>Photosynthesis By Cityfarm | by Public Lab - Home</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Public Lab's online, open source service for generating plant health analyses from near-infrared imagery.">
@@ -26,35 +26,35 @@
     <body>
 
     <div class="container page" style="padding-top:10px;">
-      <img src="./infragram-logo.png" style="float:left;margin-right:14px;">
+      <img src="./farm-logo.png" style="float:left;margin-right:14px; width:300px;">
 
       <br>
-      <h1><a style="color:#444;" href="http://infragram.org/">Infragram</a> <br class="visible-phone"><small>by <a href="http://publiclab.org/">Public Lab</a></small></h1>
+      <h1><a >Photosynthesis</a> <br class="visible-phone"><small>by <a href=" http://mitcityfarm.media.mit.edu/">CityFarm</a></small></h1>
 
-      <p>Welcome to Public Lab's online service for generating plant health analyses from near-infrared imagery!</p>
+      <!-- <p>Welcome to Public Lab's online service for generating plant health analyses from near-infrared imagery!</p> -->
 
       <hr>
 
-      <p>For more information about the Infragram platform, <a href="http://publiclab.org/wiki/near-infrared-camera">read about the open source cameras we are developing</a>, or see our <a href="http://www.kickstarter.com/projects/publiclab/infragram-the-infrared-photography-project">Kickstarter</a> video. To purchase a filter kit to make your own camera, visit <a href="http://store.publiclab.org/products/infragram-diy-filter-pack">the Public Lab Store</a></p>
+<!--       <p>For more information about the Infragram platform, <a href="http://publiclab.org/wiki/near-infrared-camera">read about the open source cameras we are developing</a>, or see our <a href="http://www.kickstarter.com/projects/publiclab/infragram-the-infrared-photography-project">Kickstarter</a> video. To purchase a filter kit to make your own camera, visit <a href="http://store.publiclab.org/products/infragram-diy-filter-pack">the Public Lab Store</a></p>
 
-      <div class="content">
+ -->      <div class="content">
 
         <hr>
 
-        <h3>JavaScript Infragram Sandbox</h3>
+       <!--  <h3>JavaScript Infragram Sandbox</h3>
 
-        <p>This page is a prototype (with <a href="https://github.com/pfoltyn/infragram-gl/issues?labels=bug&page=1&state=open">known bugs</a>), browser-based infrared compositing environment, <a href="https://github.com/bgamari/infragram-js">created by Ben Gamari</a> with additions by Don Blair and Jeff Warren.</p>
+        <p>This page is a prototype (with <a href="https://github.com/pfoltyn/infragram-gl/issues?labels=bug&page=1&state=open">known bugs</a>), browser-based infrared compositing environment, <a href="https://github.com/bgamari/infragram-js">created by Ben Gamari</a> with additions by Don Blair and Jeff Warren.</p> -->
 
         <div class="well">
 
           <div style="float:right;margin-right:20px;">
-            <span style="margin-right:20px;">Learn how to use this <a href="http://publiclab.org/wiki/infragram-sandbox">at PublicLab.org/wiki/infragram-sandbox</a></span> 
-            <b>Slider (X): &nbsp; </b>
+<!--             <span style="margin-right:20px;">Learn how to use this <a href="http://publiclab.org/wiki/infragram-sandbox">at PublicLab.org/wiki/infragram-sandbox</a></span> 
+ -->            <b>Slider (Use Variable X): &nbsp; </b>
             <div class="slider slider-horizontal" style="width: 220px;"><div class="slider-track"><div class="slider-selection" style="left: 0%; width: 100%;"></div><div class="slider-handle round" style="left: 100%;"></div><div class="slider-handle round hide" style="left: 0%;"></div></div><div class="tooltip top" style="top: -40px; left: 203px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">100</div></div><input id="slider" type="text" value="100" data-slider-min="0" data-slider-max="100" data-slider-value="100" style=""></div>
           </div>
 
           <form name="file-form">
-              <b>Select an <a href="http://publiclab.org/wiki/near-infrared-camera">infrablue image</a>: </b>
+              <b> <a href="http://publiclab.org/wiki/near-infrared-camera">Select image</a>: </b>
               <input id="file-sel" type="file" />
           </form>
 
@@ -72,9 +72,9 @@
           </form>
 
           <form id="infragrammar_hsv" class="form-inline" style="display:inline;margin-right:20px;" action="javascript:void(0)">
-            <input placeholder="H" type="text" id="h_exp" class="input-small">
-            <input placeholder="S" type="text" id="s_exp" class="input-small">
-            <input placeholder="V" type="text" id="v_exp" class="input-small">
+            <input placeholder="H" value="-(R-B)/(R+B)" type="text" id="h_exp" class="input-small">
+            <input placeholder="S" value="1" type="text" id="s_exp" class="input-small">
+            <input placeholder="V" value="1" type="text" id="v_exp" class="input-small">
             <button type="submit" id="run" class="btn btn-primary">Run</button>
           </form>
 
@@ -115,10 +115,80 @@
           </div>
         </div>
       </div>
+       <div id="toolbar">
+      <form class="form-horizontal">
 
+      
+ <div id="toolbar">
+      <form class="form-horizontal">
+<fieldset>
+
+
+<!-- Form Name -->
+<legend>Upload to Database</legend>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Type Of Plant</label>
+  <div class="plant-type-field">
+    <select id="selectbasic" name="selectbasic" class="input-xlarge">
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="plant-ip">Plant IP Address</label>
+  <div class="controls">
+    <input id="plant-ip-adress-field" name="plant-ip" placeholder="###.###.##" class="input-xlarge" type="text">
+    <p class="help-block">Plant's Location</p>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Which Farm?</label>
+  <div class="controls">
+    <select id="selectbasic" name="selectbasic" class="input-medium">
+      <option>MIT CityFarm</option>
+      <option>GDL Cinvestav</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="photo-author">Photographer</label>
+  <div class="controls">
+    <input id="photo-author-field" name="photo-author" placeholder="" class="input-xlarge" type="text">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="Comments">Any Comments on The State of The Plant?</label>
+  <div class="controls">                     
+    <textarea id="comments-field" name="Comments"></textarea>
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="control-group">
+  <label class="control-label" for="button1id">Upload/Trash File</label>
+  <div class="controls">
+    <button id="image-upload-button" name="button1id" class="btn btn-success">Upload To Server</button>
+    <button id="image-upload-button" name="button2id" class="btn btn-danger">Delete Image</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+ <div id="toolbar">
       <footer class="footer">
           <hr>
-          <h4 style="margin-bottom:40px;"><a style="color:#444;" href="http://infragram.org/">Infragram</a> <small>by <a href="http://publiclab.org/">Public Lab</a> | This web app is <a href="https://github.com/pfoltyn/infragram-gl/">open source software</a></small></h4>
+          <h4 style="margin-bottom:40px;"><a style="color:#444;" href=" TODO http://infragram.org/">Photosythesis</a> <small>by <a href="http://mitcityfarm.media.mit.edu/">CityFarm</a> | This web app is <a href="https://github.com/pfoltyn/infragram-gl/">open source software</a></small></h4>
+          <h4 style="margin-bottom:40px;"><a style="color:#444;" href="http://infragram.org/"> Based on Infragram</a> <small>by <a href="http://publiclab.org/">Public Lab</a> | This web app is <a href="https://github.com/pfoltyn/infragram-gl/">open source software</a></small></h4>
       </footer>
  
     </div>
