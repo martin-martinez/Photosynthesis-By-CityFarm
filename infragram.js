@@ -109,6 +109,23 @@ download = function(ctx) {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 setMode = function(ctx, newMode) {
   ctx.mode = newMode;
   $("#download").show();
@@ -165,22 +182,86 @@ $(document).ready(function() {
       return reader.readAsDataURL(this.files[0]);
     }
   });
-  $('button#raw').click(function() {
+  $('a#raw').click(function() {
     setMode(img_context, "raw");
     generateShader(img_context, "r", "g", "b");
     return drawScene(img_context);
   });
-  $('button#ndvi').click(function() {
+  $('a#ndvi').click(function() {
     setMode(img_context, "ndvi");
-    generateShader(img_context, "(((r-b)/(r+b))+1)/2", "(((r-b)/(r+b))+1)/2", "(((r-b)/(r+b))+1)/2");
+    generateShader(img_context, "((-(b-r)/(r+b))+1)/2", "((-(b-r)/(r+b))+1)/2", "((-(b-r)/(r+b))+1)/2");
     drawScene(img_context);
     return drawScene(map_context);
   });
-  $('button#nir').click(function() {
+  $('a#nir').click(function() {
     setMode(img_context, "nir");
     generateShader(img_context, "r", "r", "r");
     return drawScene(img_context);
   });
+ 
+   $('a#hsv-isolate').click(function() {
+    setMode(img_context, "hsv");
+    generateShader(img_context, "((R-B)/(R+B))", " ", "1");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+    $('a#hsv-red-emphasis').click(function() {
+    setMode(img_context, "hsv");
+    generateShader(img_context, "(R-5*B)/(R+B)", " ", " ");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+  $('a#hsv-active-area').click(function() {
+    setMode(img_context, "hsv");
+    generateShader(img_context, "-(4*R-2*B)/(2*R+B)", " ", " ");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+ $('a#hsv-red-highlight').click(function() {
+    setMode(img_context, "hsv");
+    generateShader(img_context, "(-(6*R-B)/(2*R+2*B))", " ", " ");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+ $('a#hsv-diff-emphasized').click(function() {
+    setMode(img_context, "hsv");
+    generateShader(img_context, "4*(R-B)/(R+B)  ", " ", " ");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+
+
+$('a#mono-illuminate').click(function() {
+    setMode(img_context, "mono");
+    generateShader(img_context, "((R+G)-(2*B))/((R+G)+(B)) ", " ((R+G)-(2*B))/((R+G)+(B)) ", " ((R+G)-(2*B))/((R+G)+(B)) ");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+$('a#mono-radiate').click(function() {
+    setMode(img_context, "mono");
+    generateShader(img_context, "(((R-B)/(R+B))+1/2)", "(((R-B)/(R+B))+1/2)", "(((R-B)/(R+B))+1/2)");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+$('a#mono-isolate').click(function() {
+    setMode(img_context, "mono");
+    generateShader(img_context, "(R-B)/(R+B)", "(R-B)/(R+B) ", "(R-B)/(R+B)");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+$('a#mono-highlight').click(function() {
+    setMode(img_context, "mono");
+    generateShader(img_context, "4*(R-B)/(R+B)", "4*(R-B)/(R+B)", "4*(R-B)/(R+B)");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+$('a#mono-black-white').click(function() {
+    setMode(img_context, "mono");
+    generateShader(img_context, "9*(R-B)/(R+B)", " 9*(R-B)/(R+B)", "9*(R-B)/(R+B)");
+    drawScene(img_context);
+    return drawScene(map_context);
+  });
+
   $('#download').click(function() {
     return download(img_context);
   });

@@ -97,7 +97,7 @@ generateShader = (ctx, r, g, b) ->
     r = r.toLowerCase().replace(/h/g, "r").replace(/s/g, "g").replace(/v/g, "b")
     g = g.toLowerCase().replace(/h/g, "r").replace(/s/g, "g").replace(/v/g, "b")
     b = b.toLowerCase().replace(/h/g, "r").replace(/s/g, "g").replace(/v/g, "b")
-
+8
     # Sanitize strings
     r = r.replace(/[^xrgb\/\-\+\*\(\)\.0-9]*/g, "")
     g = g.replace(/[^xrgb\/\-\+\*\(\)\.0-9]*/g, "")

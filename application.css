@@ -1,7 +1,7 @@
 @font-face{
   font-family:'junctionregular';
-  src:url("http://publiclab.org/assets/junction-webfont.eot");
-  src:url("http://publiclab.org/assets/junction-webfont.eot?#iefix") format("embedded-opentype"),url("http://publiclab.org/assets/junction-webfont.woff") format("woff"),url("http://publiclab.org/assets/junction-webfont.ttf") format("truetype"),url("http://publiclab.org/assets/junction-webfont.svg#junctionregular") format("svg");
+  /*src:url("http://publiclab.org/assets/junction-webfont.eot");
+  src:url("http://publiclab.org/assets/junction-webfont.eot?#iefix") format("embedded-opentype"),url("http://publiclab.org/assets/junction-webfont.woff") format("woff"),url("http://publiclab.org/assets/junction-webfont.ttf") format("truetype"),url("http://publiclab.org/assets/junction-webfont.svg#junctionregular") format("svg");*/
   font-weight:normal;
   font-style:normal
 }

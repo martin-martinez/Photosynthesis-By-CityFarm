@@ -1,10 +1,209 @@
-infragram-gl
+Photosynthesis By CityFarm
 ============
 
-Live demo on http://ignuss.ovh.org/
 
-To get started:
-    $ git clone https://github.com/pfoltyn/infragram-gl.git
-    $ cd infragram-gl
-    $ make
-    $ chrome index.html
+Essentials:
+
+
+To Run Click on the index.html file or add it to your website
+
+There are test images in the 'plants_camera_images' folder
+
+
+Note: The Upload to Database section is a TODO - it was left this way so that 
+individuals could customize it to their database. You just need to link it to the html
+
+Browsers Supported: Firefox, Safari
+If you choose to run it on Google Chrome you need to make sure webgl is enabled and chrome allows for the loading of the different 
+
+You can create your own image filters using the 'Monochrome' and 'HSV' input fields. 
+
+Look at the preexisting equations below for initial equations to try and manipulate. 
+
+=================================
+=================================
+
+Background to the Application
+
+This application was created as part of the class  MAS.S64 Edible-Bytes  at MIT http://mitcityfarm.media.mit.edu/ediblebytes/
+
+The idea behind the application was that in a “CityFarm” or any other farm for that matter you need to know how effective your growing techniques are. You want to know if a batch of plants is as healthy as the one that came before it. You want to be able to establish some kind of metric in order to judge whether one growing combination is more effective than the other. You want to be able to compare a set of plants in the same bay to see if some plants are growing better than others, figure out why this is occurring, and adjust accordingly.
+
+ ============================================================
+
+How the Imaging Occurs
+
+The Camera 
+
+This technique derived from Public Labs uses a modified digital camera to capture near-infrared and blue light in the same image, but in different color channels. We then post-process the image to attempt to infer how much it is photosynthesizing. This allows us to better understand and quantify how much of the available light plants are metabolizing into sugar via photosynthesis.
+
+Infrared/visible photography has a variety of applications. We are focused on the following uses:
+
+  Take pictures to examine plant health in CityFarms and farms of users of the CityFarm open source software. 
+
+  Generate an image that allows you to generate data on how effective your plant growth is 
+
+  Generate an image that allows you to generate data that allows you to compare how two different plant batches differed
+
+  Check progress of plants as they grow
+
+  Discover unhealthy plants and be able to analyze when its health shifted and why 
+============================
+
+Plants absorb red and blue light but not infrared. 
+
+Vegetation is green because plant leaves reflect green light -- they don't use much of it for photosynthesis. Instead they use lots of the blue and red wavelengths in sunlight. The pigments in leaves absorb this light to power photosynthesis which converts CO2, water, and nutrients into carbohydrates (food).
+
+In general, you can estimate the productivity or vigor of vegetation by how much blue and red light it is absorbing. Photosynthetic pigments do not use the longer, invisible wavelengths of near infrared light and reflect almost all of it away (this helps prevent the leaves from overheating).
+
+Healthy vegetation absorbs blue- and red-light energy to fuel photosynthesis and create chlorophyll. A plant with more chlorophyll will reflect more near-infrared energy than an unhealthy plant. Thus, analyzing a plants spectrum of both absorption and reflection in visible and in infrared wavelengths can provide information about the plants' health and productivity.
+
+http://publiclab.org/wiki/near-infrared-camera
+http://missionscience.nasa.gov/ems/08_nearinfraredwaves.html
+===================================
+
+Applications
+
+Imaging:
+
+  You could change the imaging equations accordingly to make it easier to create indexes and metrics of plant health. 
+
+  You could alter the equations to make hotspots of photosynthesis stand out.
+
+  You can soften the emphasis on photosynthesis to make it easier to compare photosynthesis over a wide array of plants. 
+============================
+Automation:
+
+Automating the photo taking and processing process in order to build up a repository of images over a given amount of time 
+
+Automate the process of creating an index based on a filter in order to quantify plant health and plot it on a time graph
+CityFarm: 
+
+Make it easier to discover what combination of variables increase plant growth efficiency
+Figure out if plant are not growing properly due to poor light placement or a chemical discrepancy
+
+====================
+Individuals: 
+Play around with the filters in order to find insights on how your plants are growing
+Create your own filters based on pre-existing ones to create your own unique insights 
+Create filters that make certain photosynthetic characteristics stand out over those of others. 
+==========
+How The The Open Source Community Can Use The Tool
+
+
+The Open Source community can use the tool to figure out whether or not their plants are healthy, what sections of the plant are more active, and customize the tool based on their growing environment. 
+
+An important aspect to consider about infrared imaging is that it differs based on whether the plants are indoors or outdoors. In order for the imaging to work their needs to be some infrared light. 
+
+
+The open source community is free to use this application for their own purposes
+
+
+=============
+For This Tool
+
+Basic 
+Equation 
+Raw 
+Raw:  "r", "g", "b"
+
+NDVI (Normalized Difference Vegetation Index)
+NDVI: "((-(b-r)/(r+b))+1)/2"
+
+=================================
+Color  (HSV)
+Equation : “Hue”, “Saturation (Intensity)”, “Value (brightness)"
+
+Isolate
+"((R-B)/(R+B))", " ", "1"
+
+Red Emphasis
+"(R-5*B)/(R+B)", " ", " "
+
+Active Area 
+"-(4*R-2*B)/(2*R+B)", " ", " "
+
+Red Highlight
+(-(6*R-B)/(2*R+2*B))", " ", " "
+
+Emphasis
+"4*(R-B)/(R+B) ", " ", " "
+
+
+====================
+
+Monochrome 
+
+Equation : (Monochrome)
+
+Illuminate
+((R+G)-(2*B))/((R+G)+(B))
+
+Radiate 
+(((R-B)/(R+B))+1/2)
+
+Highlights 
+4*(R-B)/(R+B)
+
+Black&White 
+9*(R-B)/(R+B)
+
+===============
+
+Explanation of Image Contexts:
+
+========
+Raw 
+
+Uses the RGB color channel
+
+
+=============
+NDVI 
+
+NDVI stands for "Normalized Difference Vegetation Index". NDVI is a way to visualize the amounts of infrared and other wavelengths of light reflected from vegetation. Because this method compares ratios of blue and red light absorbed versus green and IR light reflected, they can be used to evaluate the health of vegetation. It's a snapshot of how much photosynthesis is happening. This is helpful in assessing vegetative health or stress. 
+
+=================
+
+HSV
+
+Stands for hue, saturation, value 
+
+Hue:  Hue is somewhat synonymous to what we usually refer to as "colors". Red, green, blue, yellow, and orange are a few examples of different hues. The different hues have different wavelenghts in the spectrum.
+
+
+Saturation: Saturation can also be called a color's intensity. It is a measurement of how different from pure grey the color is. Saturation is not really a matter of light and dark, but rather how pale or strong the colour is. The saturation of a color is not constant, but it varies depending on the surroundings and what light the color is seen in.
+
+
+Value: The value is a measurement of the brightness of a colour. The brighter a colour is, the higher is its value and the more light it emits. For instance, a vivid yellow is brighter than dark blue, therefore its value is higher than that of the blue 
+
+http://www.colorsontheweb.com/colorterms.asp
+
+=================================
+Monochrome
+
+A painting, drawing, or photograph in a single hue
+
+
+===========================
+
+
+Sources: 
+
+This is a tool  I referenced - It is the main infragram App - It is useful but none of the code was used 
+http://infragram.org/sandbox/
+
+For The Infragram-gl Template I worked off of this source code. Most of the UI and code was changed for the purposes of the Photosynthesis App 
+https://github.com/pfoltyn/infragram-gl
+
+For More Info on the Modified Camera
+http://publiclab.org/wiki/near-infrared-camera
+https://youtu.be/ZVbC3UxlX8c
+
+
+For More Info on NDVI and imaging 
+http://publiclab.org/wiki/ndvi
+
+For The Science Behind The Imaging:
+http://publiclab.org/wiki/near-infrared-camera
+http://missionscience.nasa.gov/ems/08_nearinfraredwaves.html
